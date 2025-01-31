@@ -5,6 +5,9 @@ const nextConfig = {
       config.externals = ['@elastic/opentelemetry-node', ...config.externals];
     }
     return config;
+  },
+  env: {
+    OTEL_SERVICE_NAME: process.env.OTEL_SERVICE_NAME
   }
 };
 
