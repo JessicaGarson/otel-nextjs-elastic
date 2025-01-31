@@ -13,7 +13,6 @@ export async function GET() {
       hasOtelConfig: {
         endpoint: !!process.env.OTEL_EXPORTER_OTLP_ENDPOINT,
         headers: !!process.env.OTEL_EXPORTER_OTLP_HEADERS,
-        protocol: process.env.OTEL_EXPORTER_OTLP_PROTOCOL,
         serviceName: process.env.OTEL_SERVICE_NAME
       }
     }), {
