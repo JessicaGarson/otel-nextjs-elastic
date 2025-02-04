@@ -1,17 +1,24 @@
-export function register() {
+export async function register() {
   if (process.env.NEXT_RUNTIME === 'nodejs') {
-    console.log('Environment:', process.env.NODE_ENV);
-    console.log('Runtime:', process.env.NEXT_RUNTIME);
-    console.log('Starting OpenTelemetry initialization in', process.env.NODE_ENV);
-    console.log('Service Name:', process.env.OTEL_SERVICE_NAME);
-    console.log('Has OTLP Endpoint:', !!process.env.OTEL_EXPORTER_OTLP_ENDPOINT);
-    console.log('Has OTLP Headers:', !!process.env.OTEL_EXPORTER_OTLP_HEADERS);
-
     try {
+      console.log('Initializing Elastic OpenTelemetry...');
+      console.log('Environment:', process.env.NODE_ENV);
+      console.log('Service Name:', process.env.OTEL_SERVICE_NAME);
+      console.log('Has OTLP Endpoint:', !!process.env.OTEL_EXPORTER_OTLP_ENDPOINT);
+      
+      // Import the package
       require('@elastic/opentelemetry-node');
-      console.log('OpenTelemetry initialization successful');
+      
+      // Add a test span to verify instrumentation
+      const { trace } = require('@opentelemetry/api');
+      const tracer = trace.getTracer('init-test');
+      const span = tracer.startSpan('initialization-check');
+      span.setAttribute('environment', process.env.NODE_ENV || 'unknown');
+      span.end();
+      
+      console.log('Elastic OpenTelemetry initialization completed');
     } catch (error) {
-      console.error('Error initializing OpenTelemetry:', error);
+      console.error('Failed to initialize Elastic OpenTelemetry:', error);
     }
   }
 }
