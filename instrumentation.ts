@@ -6,10 +6,8 @@ export async function register() {
       console.log('Service Name:', process.env.OTEL_SERVICE_NAME);
       console.log('Has OTLP Endpoint:', !!process.env.OTEL_EXPORTER_OTLP_ENDPOINT);
       
-      // Import the package
       require('@elastic/opentelemetry-node');
       
-      // Add a test span to verify instrumentation
       const { trace } = require('@opentelemetry/api');
       const tracer = trace.getTracer('init-test');
       const span = tracer.startSpan('initialization-check');
