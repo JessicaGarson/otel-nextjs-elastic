@@ -32,6 +32,10 @@ You can type the following into your terminal:
 npm run dev
 ```
 
+You should be able to view this example at http://localhost:3000:
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXf3cEzq18z3OsC2563ElMY3tbXVKGuuO8HPGmHzyoMlXokTG_qJErqOh9LtHgrvxAjDtlevLCl-y9j__oPnGe3cd9M2OgcucHd6De_pZLUDKQYSARXY3haXChCU8IDUH1z_m9rqxQ?key=fHwhbKjzAatNsoMTSCNdZk2P)
+
 ## Viewing data in Elastic
 
 In Elastic, if you go to Observablity, click where it says Applications and then click where it says Service Inventory. *Note* It can take several minutes after initializing EDOT Node.js for the service to appear in this list.
